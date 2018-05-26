@@ -43,10 +43,10 @@ def main():
         words = conf['edgecase_words'].strip().split('\n')
         filter_list.append(filters.make_EdgecaseFilter(words))
 
-    wl_dir = conf.get('wl_dir', None)
-
     def errmsg(path, linenum, word):
         print("ERROR: {}:{}: {}".format(path, linenum, word))
+
+    wl_dir = conf.get('wl_dir', None)
 
     # checks contains one Check-Object for every po-file
     checks = []

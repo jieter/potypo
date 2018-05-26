@@ -49,12 +49,9 @@ class Check:
         wordlist we are looking for.
         """
         if wl_dir is not None:
-            wl_dir = os.path.abspath(wl_dir)
-            for f in os.scandir(wl_dir):
-                if f.is_file() and f.name == lang + ".txt":
-                    #print("found wordlist in", f.path)
-                    return f.path  # as there should be only one language file
-        #print("Checked wl_dir. None found")
+            wl_path = os.path.join(wl_dir, lang + '.txt')
+            if os.path.isfile(wl_path):
+                return wl_path
 
         """
         If no directory is given, the wordlist should live in a file named
