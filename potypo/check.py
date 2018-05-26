@@ -42,17 +42,18 @@ class Check:
     def get_wordlist(lang, wl_dir, po_path):
         #print("Looking for Wordlist in\nlang", lang,"\nwl_dir", wl_dir, "\npo_path",po_path)
         po_path = os.path.abspath(po_path)
-        wl_dir = os.path.abspath(wl_dir)
 
         """
         If a directory containting wordlists is given (wl_dir), there may be a
         file called "<lang>.txt". If this is the case, this should be the
         wordlist we are looking for.
         """
-        for f in os.scandir(wl_dir):
-            if f.is_file() and f.name == lang+".txt":
-                #print("found wordlist in", f.path)
-                return f.path  # as there should be only one language file
+        if wl_dir is not None:
+            wl_dir = os.path.abspath(wl_dir)
+            for f in os.scandir(wl_dir):
+                if f.is_file() and f.name == lang + ".txt":
+                    #print("found wordlist in", f.path)
+                    return f.path  # as there should be only one language file
         #print("Checked wl_dir. None found")
 
         """
