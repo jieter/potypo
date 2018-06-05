@@ -26,7 +26,7 @@ def load_classes(module, config):
 
 def main():
     config = configparser.ConfigParser()
-    config.read(['setup.cfg', 'tox.ini'])
+    config.read(['potypo.ini', 'setup.cfg', 'tox.ini'])
     conf = config['potypo']
 
     if 'locales_dir' not in conf:
